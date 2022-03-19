@@ -24,3 +24,6 @@ while True:
                         (bbox[0],bbox[1]-20),
                         cv2.FONT_HERSHEY_PLAIN,
                         3, (0, 255, 0), 2)
+      
+    cv2.imshow("Output", img)
+    cv2.waitKey(1)
