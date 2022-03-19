@@ -11,3 +11,6 @@ while True:
     success, img = cap.read()
     imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     results = faceDetection.process(imgRGB)
+
+    if results.detections:
+        for id,detection in enumerate(results.detections):
