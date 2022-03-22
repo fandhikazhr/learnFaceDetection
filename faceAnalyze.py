@@ -23,3 +23,11 @@ while True:
                 ih, iw, ic = img.shape
                 x, y = int(lm.x*iw), int(lm.y*ih)
                 print(id,x,y)
+                
+    cTime = time.time()
+    fps = 1 / (cTime - pTime)
+    pTime = cTime
+    cv2.putText(img, f'FPS : {int(fps)}', (20, 39), cv2.FONT_HERSHEY_PLAIN, 3, (0, 255, 0), 2)
+
+    cv2.imshow("Output",img)
+    cv2.waitKey(1)
