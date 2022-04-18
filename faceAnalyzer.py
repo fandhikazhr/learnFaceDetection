@@ -18,3 +18,11 @@ class FaceDetector():
         self.results = self.faceDetection.process(imgRGB)
         # print(self.results)
         bboxs = []
+        if self.results.detections:
+            for id,detection in enumerate(self.results.detections):
+                # self.mpDraw.draw_detection(img, detection)
+                bboxC = detection.location_data.relative_bounding_box
+                ih, iw, ic = img.shape
+                bbox = int(bboxC.xmin * iw), int(bboxC.ymin * ih), \
+                       int(bboxC.width * iw), int(bboxC.height * ih)
+                bboxs.append([id, bbox, detection.score])
