@@ -34,3 +34,23 @@ class FaceDetector():
                             cv2.FONT_HERSHEY_PLAIN,
                             3, (0, 255, 0), 2)
         return img, bboxs
+
+    def fancyDraw(self, img, bbox, l = 30, thickness = 5):
+        x, y, w, h = bbox
+        x1, y1 = x + w, y + h
+
+        cv2.rectangle(img, bbox, (80, 255, 0), 1)
+        # Top Left x,y
+        cv2.line(img, (x,y),(x+l,y),(80,255,0),thickness)
+        cv2.line(img, (x, y), (x, y + l), (80, 255, 0), thickness)
+        # Top Right x1,y
+        cv2.line(img, (x1, y), (x1 - l, y), (80, 255, 0), thickness)
+        cv2.line(img, (x1, y), (x1, y + l), (80, 255, 0), thickness)
+        # Bottom Left x,y1
+        cv2.line(img, (x, y1), (x + l, y1), (80, 255, 0), thickness)
+        cv2.line(img, (x, y1), (x, y1 - l), (80, 255, 0), thickness)
+        # Bottom Right x1,y1
+        cv2.line(img, (x1, y1), (x1 - l, y1), (80, 255, 0), thickness)
+        cv2.line(img, (x1, y1), (x1, y1 - l), (80, 255, 0), thickness)
+
+        return img
